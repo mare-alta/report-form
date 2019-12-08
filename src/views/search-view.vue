@@ -36,26 +36,40 @@
 
       <ds-text type="label">Histórico de ações</ds-text>
       <ds-text >esse histórico inclui o usuário e os orgãos responsaveis</ds-text>
-      <ds-fetch :request="request">
-        <template slot="sucess">
-          <div class="response" style="background: #c0ffba; margin-bottom: 20px;">
-            <ds-text> Abertura do reporte </ds-text>
-          </div>
 
-          <div
-            v-for="response of responses"
-            :key="response.insert_date"
-            class="response"
-            style="margin-left: auto;"
-          >
-            <ds-text> {{ response.desc }} </ds-text>
-            <div class="description"> {{ date(response.insert_date) }} </div>
-          </div>
+      <div class="log-wrapper">
+        <div class="response" style="background: #c0ffba; margin-top: 0px; margin-bottom: 20px;">
+          <ds-text> Abertura do reporte </ds-text>
+        </div>
 
-          <ds-text type="label">Status</ds-text>
-          <ds-text class="concluded" type="title" size="big">RESOLVIDO</ds-text>
-        </template>
-      </ds-fetch>
+        <div
+          v-for="response of responses"
+          :key="response.insert_date"
+          class="response"
+          style="margin-left: auto;"
+        >
+          <ds-text> {{ response.desc }} </ds-text>
+          <div class="description"> {{ date(response.insert_date) }} </div>
+        </div>
+
+        <div
+          v-if="!flag"
+          style="
+            text-align: center;
+            font-size: 16px;
+            font-family: Arial;
+            margin-top: 16px;
+            margin-bottom: 8px;
+          "
+        >
+          Aguadrando respostas, <a href=""> atualizar página </a>
+        </div>
+      </div>
+
+      <ds-text type="label">Status</ds-text>
+      <ds-text v-if="report.flag" class="concluded" type="title" size="big">RESOLVIDO</ds-text>
+      <ds-text else class="opened" type="title" size="big">EM ANDAMENTO</ds-text>
+
     </div>
     <ds-text
       style="
@@ -83,17 +97,13 @@ export default {
         level_ml_model: null,
         insert_date: null,
         level: null,
+        flag: false,
       },
       responses: [],
     };
   },
 
   methods: {
-    async request() {
-      const { data } = await axios.get('https://back-marealta.herokuapp.com/core/answers/');
-      this.responses = data.reverse();
-    },
-
     date(dateString) {
       const date = new Date(dateString);
       return `${date.getDay()}/${date.getMonth()}/${date.getYear()}`;
@@ -101,8 +111,10 @@ export default {
   },
 
   async created() {
-    const { data } = await axios.get('https://back-marealta.herokuapp.com/core/complaint/', { params: { id: this.$route.query.id } });
-    this.report = data;
+    const report = await axios.get('https://back-marealta.herokuapp.com/core/complaint/', { params: { id: this.$route.query.id } });
+    this.report = report.data;
+    const answers = await axios.get('https://back-marealta.herokuapp.com/core/answers/');
+    this.responses = answers.data.filter(answer => answer.user === report.data.id);
   },
 };
 </script>
@@ -144,7 +156,7 @@ export default {
   padding: 12px;
   width: fit-content;
   max-width: 320px;
-  background: #f1f1f1;
+  background: #e0e0e0;
   border-radius: 4px;
   font-family: Arial, Helvetica, sans-serif;
 
@@ -154,10 +166,26 @@ export default {
   }
 }
 
+.log-wrapper {
+  margin-top: 4px;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #f7f7f7;
+}
+
 .concluded {
-  // margin-top: 40px;
+  margin-top: 8px;
   padding: 24px;
   background: #c0ffba;
+  border-radius: 4px;
+  justify-content: center;
+  text-align: center;
+}
+
+.opened {
+  margin-top: 8px;
+  padding: 24px;
+  background: #f7f7f7;
   border-radius: 4px;
   justify-content: center;
   text-align: center;

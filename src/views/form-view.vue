@@ -29,10 +29,10 @@
         <ds-text type="label">Onde ocorreu o evento?</ds-text>
         <ds-textarea
           v-model="where"
-          placeholder="Descreva o local onde acontece o evento/sinistro."/>
+          placeholder="Descreva o local onde aconteceu o sinistro."/>
 
         <ds-text type="label">Descreva o evento:</ds-text>
-        <ds-textarea v-model="description" placeholder="Descreva o sinistro. Em detalhes!"/>
+        <ds-textarea v-model="description" placeholder="Descreva o sinistro em detalhes."/>
 
         <ds-text type="label">Qual a gravidade do evento?</ds-text>
         <select
@@ -59,7 +59,7 @@
             @change="handleFileDrop"
             style="height: 100%; width: 100%; position: absolute; top: 0; left: 0; opacity: 0;"
             multiple>
-          <ds-text type="action"> Enviar arquivos! </ds-text>
+          <ds-text type="action"> Enviar arquivos </ds-text>
         </div>
 
         <div class="files-dropped">

@@ -27,11 +27,11 @@
           border-radius: 4px;
         "
       >
-        <option value="Grave">Gravissimo</option>
+        <option value="Gravissimo">Gravissimo</option>
         <option value="Grave">Grave</option>
-        <option value="Grave">Perigoso</option>
-        <option value="Grave">Baixa gravidade</option>
-        <option value="Grave">Baixissima gravidade</option>
+        <option value="Perigoso">Perigoso</option>
+        <option value="Baixa gravidade">Baixa gravidade</option>
+        <option value="Baixissima gravidade">Baixissima gravidade</option>
       </select>
 
       <ds-text type="label">Inclua fotos do evento!</ds-text>

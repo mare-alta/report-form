@@ -22,7 +22,7 @@
       <ds-text
         tag="a"
         style="display: block; margin-top: 16px;"
-        :href="'/search?id=' + id"> Acompanhar meu reporte </ds-text>
+        href="/"> Acompanhar reportes </ds-text>
     </div>
     <ds-text
       style="

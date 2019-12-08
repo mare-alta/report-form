@@ -5,8 +5,8 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
+    path: '/criar-reporte',
+    name: 'criar-reporte',
     component: () => import('../views/form-view.vue'),
   },
   {
@@ -22,9 +22,9 @@ const routes = [
 
 
   {
-    path: '/port',
+    path: '/',
     name: 'home',
-    component: () => import('../views/port-form-view.vue'),
+    component: () => import('../views/reports-view.vue'),
   },
 ];
 

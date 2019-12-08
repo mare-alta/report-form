@@ -114,7 +114,7 @@ export default {
     const report = await axios.get('https://back-marealta.herokuapp.com/core/complaint/', { params: { id: this.$route.query.id } });
     this.report = report.data;
     const answers = await axios.get('https://back-marealta.herokuapp.com/core/answers/');
-    this.responses = answers.data.filter(answer => answer.user === report.data.id);
+    this.responses = answers.data.filter(answer => answer.complaint === report.data.id);
   },
 };
 </script>

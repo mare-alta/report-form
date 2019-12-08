@@ -22,7 +22,7 @@
       <ds-text
         tag="a"
         style="display: block; margin-top: 16px;"
-        :href="'/search?id=' + id"> Pesquisar meu ID </ds-text>
+        :href="'/search?id=' + id"> Acompanhar meu reporte </ds-text>
     </div>
     <ds-text
       style="

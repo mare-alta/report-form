@@ -39,7 +39,7 @@
       <ds-text >esse histórico inclui o usuário e os orgãos responsaveis</ds-text>
       <ds-fetch :request="request">
         <template slot="sucess">
-          <div class="response">
+          <div class="response" style="background: #c0ffba; margin-bottom: 20px;">
             <ds-text> Abertura do reporte </ds-text>
           </div>
 
@@ -53,6 +53,7 @@
             <div class="description"> {{ date(response.insert_date) }} </div>
           </div>
 
+          <ds-text type="label">Status</ds-text>
           <ds-text class="concluded" type="title" size="big">RESOLVIDO</ds-text>
         </template>
       </ds-fetch>
@@ -141,9 +142,9 @@ export default {
 }
 
 .concluded {
-  margin-top: 40px;
+  // margin-top: 40px;
   padding: 24px;
-  background: lawngreen;
+  background: #c0ffba;
   border-radius: 4px;
   justify-content: center;
   text-align: center;

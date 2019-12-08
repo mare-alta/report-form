@@ -11,13 +11,14 @@
       </ds-text>
 
       <ds-text type="label">Onde ocorreu o evento?</ds-text>
-      <ds-textarea placeholder="Descreva o local onde acontece o evento/sinistro."/>
+      <ds-textarea v-model="where" placeholder="Descreva o local onde acontece o evento/sinistro."/>
 
       <ds-text type="label">Descreva o evento!</ds-text>
-      <ds-textarea placeholder="Descreva o sinistro. Em detalhes!"/>
+      <ds-textarea v-model="description" placeholder="Descreva o sinistro. Em detalhes!"/>
 
       <ds-text type="label">Qual a gravidade do evento!</ds-text>
       <select
+        v-model="severity"
         style="
           margin-top: 8px;
           padding: 12px;
@@ -48,6 +49,8 @@
       </div>
 
       <ds-button
+        @click.native="handleSendButtonClick"
+        :disabled="!where || !severity || !description"
         style="
           margin-top: 60px;
           width: 100%;
@@ -68,17 +71,32 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'home',
   data() {
     return {
       files: [],
+      where: '',
+      severity: '',
+      description: '',
     };
   },
 
   methods: {
     handleFileDrop({ target }) {
       this.files = [...this.files, ...Object.entries(target.files).map(arr => arr[1])];
+    },
+
+    async handleSendButtonClick() {
+      const response = await axios.post('https://back-marealta.herokuapp.com/core/complaints/', {
+        user_hash: Math.random(),
+        desc: this.description,
+        place: this.where,
+      });
+
+      console.log(response);
     },
   },
 };

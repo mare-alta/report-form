@@ -1,5 +1,6 @@
 <template>
   <textarea
+    @input="$emit('input', $event.target.value)"
     rows="4"
     style="
       margin-top: 8px;

@@ -1,13 +1,17 @@
 <template>
   <ds-container id="form-view">
     <div class="form">
-      <img class="img" src="@/assets/logo.png" />
 
-      <ds-text type="title" size="big">Faça sua denuncia</ds-text>
+      <ds-text
+        type="title"
+        style="display: flex; align-items: center; margin-bottom: 40px;" size="medium">
+        <img class="img" src="@/assets/logo.png" />
+        Maré Alta
+      </ds-text>
+
+      <ds-text type="title" size="big">Revise o reporte</ds-text>
       <ds-text style="margin-top: 8px;">
-        Reporte irregularidades, é anonimo e seguro! <br>
-        Ajude a manter o porto um lugar seguro reportando irregularidades
-        para que o possamos agir rápido e evitar acidentes.
+        Cheque todas as informações do reporte! <br>
       </ds-text>
 
       <ds-text type="label">Onde ocorreu o evento?</ds-text>
@@ -41,10 +45,6 @@
           style="height: 100%; width: 100%; position: absolute; top: 0; left: 0; opacity: 0;"
           multiple>
         <ds-text type="action"> Enviar arquivos! </ds-text>
-      </div>
-
-      <div class="files-dropped">
-        <div v-for="file of files" class="file" :key="file.name"> {{ file.name }} </div>
       </div>
 
       <ds-button
@@ -127,9 +127,9 @@ export default {
 }
 
 .img {
-  display: block;
-  width: 250px;
+  // display: block;
+  width: 80px;
   // height: 200px;
-  margin: 0 auto 40px;
+  margin-right: 20px;
 }
 </style>

@@ -54,5 +54,11 @@ export default {
   }
 
   &:active {}
+
+  &[disabled="disabled"] {
+    opacity: 0.25;
+    cursor: default;
+    pointer-events: none;
+  }
 }
 </style>

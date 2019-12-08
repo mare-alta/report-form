@@ -11,13 +11,14 @@
       </ds-text>
 
       <ds-text type="label">Onde ocorreu o evento?</ds-text>
-      <ds-textarea placeholder="Descreva o local onde acontece o evento/sinistro."/>
+      <ds-textarea v-model="where"  placeholder="Descreva o local onde acontece o evento/sinistro."/>
 
       <ds-text type="label">Descreva o evento!</ds-text>
-      <ds-textarea placeholder="Descreva o sinistro. Em detalhes!"/>
+      <ds-textarea v-model="description" placeholder="Descreva o sinistro. Em detalhes!"/>
 
       <ds-text type="label">Qual a gravidade do evento!</ds-text>
       <select
+        v-model="severity"
         style="
           margin-top: 8px;
           padding: 12px;
@@ -48,6 +49,7 @@
       </div>
 
       <ds-button
+        @click.native="handleSendButtonClick"
         style="
           margin-top: 60px;
           width: 100%;
@@ -72,6 +74,9 @@ export default {
   name: 'home',
   data() {
     return {
+      where: '',
+      description: '',
+      severity: '',
       files: [],
     };
   },
@@ -79,6 +84,10 @@ export default {
   methods: {
     handleFileDrop({ target }) {
       this.files = [...this.files, ...Object.entries(target.files).map(arr => arr[1])];
+    },
+
+    handleSendButtonClick() {
+      console.log(this);
     },
   },
 };

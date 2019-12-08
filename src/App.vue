@@ -5,6 +5,10 @@
 </template>
 
 <style>
+html {
+  font-size: 4px;
+}
+
 html,
 body,
 #app {

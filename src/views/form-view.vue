@@ -31,10 +31,10 @@
           v-model="where"
           placeholder="Descreva o local onde acontece o evento/sinistro."/>
 
-        <ds-text type="label">Descreva o evento!</ds-text>
+        <ds-text type="label">Descreva o evento:</ds-text>
         <ds-textarea v-model="description" placeholder="Descreva o sinistro. Em detalhes!"/>
 
-        <ds-text type="label">Qual a gravidade do evento!</ds-text>
+        <ds-text type="label">Qual a gravidade do evento?</ds-text>
         <select
           v-model="severity"
           style="
@@ -51,7 +51,7 @@
           <option value="Baixissima gravidade">Baixissima gravidade</option>
         </select>
 
-        <ds-text type="label">Inclua fotos do evento!</ds-text>
+        <ds-text type="label">Inclua fotos do evento:</ds-text>
 
         <div class="files-button">
           <input

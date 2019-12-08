@@ -10,7 +10,7 @@ Vue.component('ds-textarea', () => import('./components/ds-textarea/index.vue'))
 
 Vue.component('ds-fetch', () => import('./components/ds-fetch/index.vue'));
 Vue.component('ds-button', () => import('./components/ds-button/index.vue'));
-Vue.component('ds-tinput', () => import('./components/ds-tinput/index.vue'));
+Vue.component('ds-input', () => import('./components/ds-input/index.vue'));
 Vue.component('ds-text', () => import('./components/ds-text/index.vue'));
 
 Vue.config.productionTip = false;

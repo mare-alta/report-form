@@ -109,13 +109,13 @@ export default {
     },
 
     async handleSendButtonClick() {
-      this.$refs.fetch.fetchData(() => axios.post('https://back-marealta.herokuapp.com/core/complaints/', {
+      const { data } = await this.$refs.fetch.fetchData(() => axios.post('https://back-marealta.herokuapp.com/core/complaints/', {
         user_hash: Math.random(),
         desc: this.description,
         place: this.where,
-        // level: this.severity,
       }));
-      this.$router.push('/id');
+
+      this.$router.push(`/id?id=${data[0].id}`);
     },
   },
 };

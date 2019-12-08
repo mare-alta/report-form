@@ -26,13 +26,12 @@
 
       <ds-text type="label">Onde ocorreu o evento?</ds-text>
       <ds-text class="disabled-field">
-        Doca 18
+        {{ report.place ? report.place : "loading..." }}
       </ds-text>
 
       <ds-text type="label">Descrição do evento?</ds-text>
       <ds-text class="disabled-field">
-        Vasamento de oleo de um navio atracado na doca 18, o vasamento
-        aumenta a cada minuto, com o potencial catastrofico para a biodiversidade.
+        {{ report.desc ? report.desc : "loading..." }}
       </ds-text>
 
       <ds-text type="label">Histórico de ações</ds-text>
@@ -76,6 +75,15 @@ export default {
   name: 'id',
   data() {
     return {
+      report: {
+        id: null,
+        user_hash: null,
+        desc: null,
+        place: null,
+        level_ml_model: null,
+        insert_date: null,
+        level: null,
+      },
       responses: [],
     };
   },
@@ -90,6 +98,11 @@ export default {
       const date = new Date(dateString);
       return `${date.getDay()}/${date.getMonth()}/${date.getYear()}`;
     },
+  },
+
+  async created() {
+    const { data } = await axios.get('https://back-marealta.herokuapp.com/core/complaint/', { params: { id: this.$route.query.id } });
+    this.report = data;
   },
 };
 </script>

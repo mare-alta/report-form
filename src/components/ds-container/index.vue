@@ -8,7 +8,7 @@
   .ds-container {
     width: 100%;
     max-width: 640px;
-    padding: 0 20px;
+    padding: 0 4px;
     margin-left: auto;
     margin-right: auto;
   }

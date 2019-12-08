@@ -10,13 +10,13 @@
 
       <ds-text type="title" size="big">ID</ds-text>
       <ds-text style="margin-top: 8px;">
-        Utilize o <b>ID</b> a baixo para rastrear seu reporte. <br>
+        Utilize o <b>identificador (id)</b> a baixo para rastrear seu reporte. <br>
         É importante o acompanhamento do processo para entender o
         que as autoridades estão fazendo a respeito do seu reporte.
       </ds-text>
 
       <div class="id">
-        <ds-text type="title" size="big"> {{ id }} </ds-text>
+        <ds-text type="title" size="big"> {{ $route.query.id }} </ds-text>
       </div>
 
       <ds-text

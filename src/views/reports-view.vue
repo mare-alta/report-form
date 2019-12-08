@@ -7,21 +7,20 @@
         style="display: flex; align-items: center; margin-bottom: 40px;" size="medium">
         <img class="img" src="@/assets/logo.png" />
         Maré Alta
-
-        <ds-button
-          @click.native="() => $router.push('/criar-reporte')"
-          style="margin-left: auto;"
-        > CRIAR REPORTE </ds-button>
       </ds-text>
 
-      <ds-text type="title" size="big">Reportes</ds-text>
+      <ds-button
+        @click.native="() => $router.push('/criar-reporte')"
+      > CRIAR REPORTE </ds-button>
+
+      <ds-text style="margin-top: 20px;" type="title" size="big">Reportes</ds-text>
       <ds-text style="margin-top: 8px;">
         Cheque todas os reportes: <br>
       </ds-text>
 
       <table>
         <thead>
-          <ds-text tag="th"> Identificador </ds-text>
+          <ds-text tag="th"> ID </ds-text>
           <ds-text tag="th"> Descrição </ds-text>
           <ds-text tag="th"> Nível </ds-text>
           <ds-text tag="th"> Local </ds-text>
@@ -30,7 +29,7 @@
           <tr
             :key="report.id"
             v-for="report of reports"
-            @click="() => $router.push('/search?id=' + report.id)"
+            @click="() => $router.push('/reporte?id=' + report.id)"
           >
             <ds-text tag="td"> {{ report.id }} </ds-text>
             <ds-text tag="td"> {{ report.desc }} </ds-text>
@@ -74,7 +73,7 @@ export default {
 <style lang="scss">
 .form {
   margin-top: 40px;
-  padding: 40px;
+  padding: 30px;
   background: white;
   border-radius: 8px;
 
@@ -94,7 +93,7 @@ table {
 }
 
 th, td {
-  padding: 8px;
+  padding: 4px;
   border: 1px solid grey;
 }
 

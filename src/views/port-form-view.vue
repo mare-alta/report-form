@@ -127,9 +127,7 @@ export default {
 }
 
 .img {
-  // display: block;
   width: 80px;
-  // height: 200px;
   margin-right: 20px;
 }
 </style>
